@@ -1,62 +1,58 @@
 
 // import { NgModule } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
-// import { RouterModule } from '@angular/router';
+// import { AppRoutingModule } from './app-routing.module'; // Import the AppRoutingModule
 // import { AppComponent } from './app.component';
 // import { HomeComponent } from './home/home.component';
 // import { BranchComponent } from './branch/branch.component';
-// import { EngineeringService } from './engineering.service';
-// import { FormsModule } from '@angular/forms';
 // import { StudentComponent } from './student/student.component';
+// import { EngineeringService } from './engineering.service'; // Import the service
+// import { FormsModule } from '@angular/forms';
 
 // @NgModule({
 //   declarations: [
 //     AppComponent,
 //     HomeComponent,
-//     BranchComponent
+//     BranchComponent,
+//     StudentComponent
 //   ],
 //   imports: [
 //     BrowserModule,
 //     FormsModule,
-//     RouterModule.forRoot([
-//       { path: '', component: HomeComponent },
-//   { path: 'branches/:branchName', component: BranchComponent },
-//   { path: 'branches/:branchName/view/:studentId', component: BranchComponent },
-//   { path: 'branches/:branchName/edit/:studentId', component: BranchComponent },
-//   { path: 'branches/:branchName/student/:studentId', component: StudentComponent }, 
-//   { path: 'branches/:branchName/student/:studentId/edit', component: StudentComponent },
-//     ])
+//     AppRoutingModule, // Add the AppRoutingModule here
 //   ],
-//   providers: [EngineeringService],
+//   providers: [EngineeringService], // Provide the service
 //   bootstrap: [AppComponent]
 // })
 // export class AppModule { }
 
 
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module'; // Import the AppRoutingModule
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { RouterModule } from '@angular/router'; // Import RouterModule
+
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { BranchComponent } from './branch/branch.component';
 import { StudentComponent } from './student/student.component';
-import { EngineeringService } from './engineering.service'; // Import the service
-import { FormsModule } from '@angular/forms';
+import { EngineeringService } from './engineering.service';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
     HomeComponent,
-    BranchComponent,
-    StudentComponent
-  ],
+     BranchComponent, 
+     StudentComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule, // Add the AppRoutingModule here
+    AppRoutingModule, // Add FormsModule
+    RouterModule.forRoot([]) // Set up your routes here
   ],
-  providers: [EngineeringService], // Provide the service
+  providers: [EngineeringService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

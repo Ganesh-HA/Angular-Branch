@@ -1,61 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { EngineeringService } from '../engineering.service';
-// import { Student } from '../student.model';
-
-// @Component({
-//   selector: 'app-student',
-//   templateUrl: './student.component.html',
-//   styleUrls: ['./student.component.css']
-// })
-// export class StudentComponent implements OnInit {
-//   studentId!: number;
-//   student: Student | undefined;
-//   isEditing: boolean = false;
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private router: Router,
-//     private engineeringService: EngineeringService
-//   ) {}
-
-//   ngOnInit() {
-//     this.route.params.subscribe(params => {
-//       this.studentId = +params['studentId'];
-//       this.loadStudentDetails();
-//     });
-//   }
-
-//   loadStudentDetails() {
-//     this.student = this.engineeringService.getStudentById(this.studentId);
-//   }
-
-//   viewStudent() {
-//     this.isEditing = false;
-//     this.loadStudentDetails();
-//   }
-
-//   editStudent() {
-//     this.isEditing = true;
-//   }
-
-//   saveEditedStudent() {
-//     // Implement logic to save edited student details
-//     // Update the student's information
-//     this.isEditing = false;
-//   }
-
-//   cancelEdit() {
-//     this.isEditing = false;
-//     this.loadStudentDetails(); // Reload the original student details
-//   }
-
-//   deleteStudent() {
-//     this.engineeringService.deleteStudent(this.studentId);
-//     this.router.navigate(['/branches', this.student?.branch]);
-//   }
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EngineeringService } from '../engineering.service';
@@ -68,6 +10,7 @@ import { Student } from '../student.model';
 })
 export class StudentComponent implements OnInit {
   studentId!: number;
+  branchName: string = '';
   student: Student | undefined;
   isEditing: boolean = false;
 
@@ -80,13 +23,14 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.studentId = +params['studentId'];
+      this.branchName = params['branchName']; // Assuming you have branchName parameter
       this.isEditing = params['edit'] === 'edit';
       this.loadStudentDetails();
     });
   }
 
   loadStudentDetails() {
-    this.student = this.engineeringService.getStudentById(this.studentId);
+    this.student = this.engineeringService.getStudentByIdAndBranch(this.studentId, this.branchName);
   }
 
   editStudent() {
