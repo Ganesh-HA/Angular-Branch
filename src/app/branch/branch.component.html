@@ -1,0 +1,49 @@
+<!-- <div class="container">
+  <h1>{{ branchName }} Branch</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>
+          <button (click)="viewStudentDetails(student)" class="btn btn-primary">View</button>
+          <button (click)="editStudent(student)" class="btn btn-success">Edit</button>
+          <button (click)="deleteStudent(student)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ -->
+
+ <div class="container">
+  <h2>Branch: {{ branchName }}</h2>
+  <p>List of students:</p>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>
+        <a [routerLink]="['/branches', branchName, 'student', student.id]">View </a>
+        <!-- <a [routerLink]="['/branches', branchName, 'student', student.id, 'edit']">Edit </a> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+
+<!-- 
+<div class="container">
+  <h2>Welcome to Engineering Branches Project</h2>
+  <p>Click on a branch to explore:</p>
+  <ul>
+    <li><a [routerLink]="['/branches', 'ECE']">ECE</a></li>
+    <li><a [routerLink]="['/branches', 'CSE']">CSE</a></li>
+    <li><a [routerLink]="['/branches', 'EEE']">EEE</a></li>
+  </ul>
+</div> -->
+
+
+<div class="container">
+  <h1>Welcome to the Engineering Portal</h1>
+  <p>Explore our engineering branches:</p>
+ 
+  <div class="branch-buttons">
+    <button (click)="navigateToBranch('ECE')" class="btn btn-primary">ECE</button>
+    <button (click)="navigateToBranch('CSE')" class="btn btn-primary">CSE</button>
+    <button (click)="navigateToBranch('EEE')" class="btn btn-primary">EEE</button>
+  </div>
+</div>
+

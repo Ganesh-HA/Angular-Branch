@@ -1,0 +1,53 @@
+/* Apply styles to the table */
+table {
+  width: 50%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+/* Style for table header cells */
+th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Style for table data cells */
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Apply alternate background color to even rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for buttons */
+.btn {
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+/* Add more styling as needed */

@@ -1,0 +1,177 @@
+<!-- <div class="container">
+  <h1>Student Details</h1>
+  <div *ngIf="student; else loading">
+    <div *ngIf="!isEditing">
+      <p><strong>ID:</strong> {{ student.id }}</p>
+      <p><strong>Name:</strong> {{ student.name }}</p>
+  
+      <button (click)="viewStudent()" class="btn btn-primary">View</button>
+<button (click)="editStudent()" class="btn btn-success">Edit</button>
+
+      <button (click)="isEditing = true" class="btn btn-success">Edit</button>
+      <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
+    </div>
+    <div *ngIf="isEditing">
+  
+      <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
+      <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div> -->
+
+
+<!-- <div class="container">
+  <h2>Student Details</h2>
+  <div *ngIf="student; else loading">
+    <div *ngIf="!isEditing">
+      <p><strong>ID:</strong> {{ student.id }}</p>
+      <p><strong>Name:</strong> {{ student.name }}</p>
+      <p><strong>Age:</strong> {{ student.age }}</p>
+      <p><strong>Phone Number:</strong> {{ student.phoneNumber }}</p>
+      <p><strong>Address:</strong> {{ student.address }}</p>
+      <p><strong>Blood Group:</strong> {{ student.bloodGroup }}</p>
+      <p><strong>Branch:</strong> {{ student.branch }}</p>
+      
+      <button (click)="editStudent()" class="btn btn-success">Edit</button>
+      <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
+    </div>
+    <div *ngIf="isEditing">
+     
+      <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
+      <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div> -->
+<!-- 
+
+<div class="container">
+  <h2>Student Details</h2>
+  <div *ngIf="student; else loading">
+    <div *ngIf="!isEditing; else editView">
+      
+      <p><strong>ID:</strong> {{ student.id }}</p>
+      <p><strong>Name:</strong> {{ student.name }}</p>
+      <p><strong>Age:</strong> {{ student.age }}</p>
+      <p><strong>Phone Number:</strong> {{ student.phoneNumber }}</p>
+      <p><strong>Address:</strong> {{ student.address }}</p>
+      <p><strong>Blood Group:</strong> {{ student.bloodGroup }}</p>
+      <p><strong>Branch:</strong> {{ student.branch }}</p>
+      
+      <button (click)="editStudent()" class="btn btn-success">Edit</button>
+      <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
+    </div>
+    <ng-template #editView>
+      <div *ngIf="isEditing">
+        
+        <label for="name">Name:</label>
+        <input id="name" [(ngModel)]="student.name" class="form-control" />
+
+        <label for="age">Age:</label>
+        <input id="age" [(ngModel)]="student.age" class="form-control" />
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" [(ngModel)]="student.phoneNumber" class="form-control" />
+
+        <label for="address">Address:</label>
+        <input id="address" [(ngModel)]="student.address" class="form-control" />
+
+        <label for="bloodGroup">Blood Group:</label>
+        <input id="bloodGroup" [(ngModel)]="student.bloodGroup" class="form-control" />
+
+       
+
+        
+     
+        <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
+        <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div> -->
+
+
+<div class="container">
+  <h2>Student Details</h2>
+  <div *ngIf="student; else loading">
+    <table class="table">
+      <tbody>
+        <ng-container *ngIf="!isEditing;  editStudent">
+          <tr>
+            <th>ID</th>
+            <td>{{ student.id }}</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>{{ student.name }}</td>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <td>{{ student.age }}</td>
+          </tr>
+          <tr>
+            <th>Phone Number</th>
+            <td>{{ student.phoneNumber }}</td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>{{ student.address }}</td>
+          </tr>
+          <tr>
+            <th>Blood Group</th>
+            <td>{{ student.bloodGroup }}</td>
+          </tr>
+          <tr>
+            <th>Branch</th>
+            <td>{{ student.branch }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button (click)="editStudent()" class="btn btn-success">Edit</button>
+              <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="isEditing">
+          <tr>
+            <th>ID</th>
+            <td>{{ student.id }}</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td><input [(ngModel)]="student.name" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th>Age</th>
+            <td><input [(ngModel)]="student.age" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th>Phone Number</th>
+            <td><input [(ngModel)]="student.phoneNumber" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td><input [(ngModel)]="student.address" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th>Blood Group</th>
+            <td><input [(ngModel)]="student.bloodGroup" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th>Branch</th>
+            <td>{{ student.branch }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
+              <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div>
