@@ -1,90 +1,3 @@
-<!-- 
-<div class="container">
-  <h2>Student Details</h2>
-  <div *ngIf="student; else loading">
-    <table class="table">
-      <tbody>
-        <ng-container *ngIf="!isEditing;  editStudent">
-          <tr>
-            <th>ID</th>
-            <td>{{ student.id }}</td>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <td>{{ student.name }}</td>
-          </tr>
-          <tr>
-            <th>Age</th>
-            <td>{{ student.age }}</td>
-          </tr>
-          <tr>
-            <th>Phone Number</th>
-            <td>{{ student.phoneNumber }}</td>
-          </tr>
-          <tr>
-            <th>Address</th>
-            <td>{{ student.address }}</td>
-          </tr>
-          <tr>
-            <th>Blood Group</th>
-            <td>{{ student.bloodGroup }}</td>
-          </tr>
-          <tr>
-            <th>Branch</th>
-            <td>{{ student.branch }}</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <button (click)="editStudent()" class="btn btn-success">Edit</button>
-              <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-        </ng-container>
-        <ng-container *ngIf="isEditing">
-          <tr>
-            <th>ID</th>
-            <td>{{ student.id }}</td>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <td><input [(ngModel)]="student.name" class="form-control" /></td>
-          </tr>
-          <tr>
-            <th>Age</th>
-            <td><input [(ngModel)]="student.age" class="form-control" /></td>
-          </tr>
-          <tr>
-            <th>Phone Number</th>
-            <td><input [(ngModel)]="student.phoneNumber" class="form-control" /></td>
-          </tr>
-          <tr>
-            <th>Address</th>
-            <td><input [(ngModel)]="student.address" class="form-control" /></td>
-          </tr>
-          <tr>
-            <th>Blood Group</th>
-            <td><input [(ngModel)]="student.bloodGroup" class="form-control" /></td>
-          </tr>
-          <tr>
-            <th>Branch</th>
-            <td>{{ student.branch }}</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
-              <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #loading>Loading...</ng-template>
-</div> -->
-
-
-
-
 <div class="container">
   <h2>Student Details</h2>
   <div *ngIf="student; else loading">
@@ -121,6 +34,7 @@
           </tr>
           <tr>
             <td colspan="2">
+              <button (click)="addStudent" class="btn btn-primary">Add Student</button>
               <button (click)="editStudent()" class="btn btn-success">Edit</button>
               <button (click)="deleteStudent()" class="btn btn-danger">Delete</button>
             </td>
@@ -157,6 +71,7 @@
           </tr>
           <tr>
             <td colspan="2">
+              
               <button (click)="saveEditedStudent()" class="btn btn-success">Save</button>
               <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
             </td>
@@ -166,4 +81,5 @@
     </table>
   </div>
   <ng-template #loading>Invalid.....</ng-template>
-</div>
+</div> 
+ 

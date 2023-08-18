@@ -1,5 +1,5 @@
 export class Student {
-  id: number = 0; // Assign a default value here
+  id: number = 0; 
   name: string = '';
   age: number = 0;
   phoneNumber: string = '';

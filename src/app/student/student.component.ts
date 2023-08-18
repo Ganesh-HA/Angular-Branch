@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EngineeringService } from '../engineering.service';
 import { Student } from '../student.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-student',
@@ -17,43 +18,86 @@ export class StudentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private engineeringService: EngineeringService
+    private engineeringService: EngineeringService,
+    private http:HttpClient
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.studentId = +params['studentId'];
-      this.branchName = params['branchName']; // Assuming you have branchName parameter
+      this.branchName = params['branchName']; 
       this.isEditing = params['edit'] === 'edit';
-      this.loadStudentDetails();
+      
     });
+    this.fetchStudents();
+    this.addStudent;
+    this.deleteStudent();
+    this.saveEditedStudent();
   }
 
-  loadStudentDetails() {
-    this.student = this.engineeringService.getStudentByIdAndBranch(this.studentId, this.branchName);
+  async fetchStudents(){
+    try {
+      const response=await this.http.get<any>(`http://localhost:8080/branches/${this.branchName}/student/${this.studentId}`).toPromise();
+      console.log(response);
+      
+      this.student=response;
+    } catch (error){
+      console.log(error);
+      
+    }
   }
-
+  
   editStudent() {
     this.isEditing = true;
   }
 
-  saveEditedStudent() {
+  Student() {
+    this.isEditing = true;
+  }
+  
+  
+  async saveEditedStudent() {
     if (this.student) {
-      this.engineeringService.updateStudent(this.student);
-      this.isEditing = false;
+      try {
+        const response = await this.http.put<any>(`http://localhost:8080/students/${this.student.id}/edit`, this.student).toPromise();
+        console.log(response);
+        this.isEditing = false;
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
   cancelEdit() {
     this.isEditing = false;
-    this.loadStudentDetails();
   }
 
-  deleteStudent() {
+  async deleteStudent() {
     if (this.student) {
-      const branchName = this.student.branch;
-      this.engineeringService.deleteStudent(this.student.id);
-      this.router.navigate(['/branches', branchName]);
+      try {
+        const response = await this.http.delete<any>(`http://localhost:8080/students/${this.student.id}/delete`).toPromise();
+        console.log(response);
+        const branchName = this.student.branch;
+        this.router.navigate(['/branches', branchName]);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
+
+
+  
+  async addStudent(newStudent: Student) {
+    try {
+      const response = await this.http.post<any>('http://localhost:8080/students/add', newStudent).toPromise();
+      console.log(response);
+      // Optionally, you can navigate to the branch page after adding
+      this.router.navigate(['/branches', newStudent.branch]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 }
+
+

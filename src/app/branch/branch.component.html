@@ -1,5 +1,4 @@
 
-
  <div class="container">
   <h2>Branch: {{ branchName }}</h2>
   <p>List of students:</p>
@@ -17,8 +16,6 @@
         <td>{{ student.id }}</td>
         <td>{{ student.name }}</td>
         <td>
-        <!-- <a [routerLink]="['/branches', branchName, 'student', student.id]">View </a> -->
-       
 
         <a [routerLink]="['/branches', branchName, 'student', student.id]" class="btn btn-primary">View</a>
 
